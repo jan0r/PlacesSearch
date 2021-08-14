@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    String apiKey = 'AIzaSyBTYW4s3JRHEMFNEZE1FAGZ7UgIeba69qE';
+    String apiKey = ' <<== YOUR API KEY GOES HERE ==>>';
     googlePlace = GooglePlace(apiKey);
 
     super.initState();

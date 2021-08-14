@@ -1,16 +1,35 @@
-# places_search
+# PlacesSearch by jan0r
 
 Searching through available google maps places and returning top 3 results matching the user input most closly immediatly.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/20814879/129452579-484001a9-1425-4e39-bd71-207577a26d2c.gif)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+## How To use Places Search
+
+  ✅  &nbsp; Install flutter on your system: [getting started with flutter](https://flutter.dev/docs/get-started/install) <br/>
+  <br />
+  ✅  &nbsp; Clone the project with "git clone https://github.com/jan0r/PlacesSearch.git"  <br/>
+  <br />  
+  ✅  &nbsp; [Get your google maps API KEY here](https://developers.google.com/maps/documentation/javascript/get-api-key)  <br/>
+  <br />
+  ✅  &nbsp; Integrate your API Key in the [addressService.dart](https://github.com/jan0r/PlacesSearch/blob/dev/lib/services/addressService.dart) and in the [main.dart](https://github.com/jan0r/PlacesSearch/blob/dev/lib/main.dart) file <br/>
+  <br />
+  ✅  &nbsp; Run the project with "flutter run"  <br/>
+  <br />
+  ✅  &nbsp; Enjoy the places search service in your custom project  <br/>
+
+
+
+
+
+
+
+
+
+
+
