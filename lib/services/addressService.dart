@@ -9,7 +9,7 @@ class AddressService {
   var addresses = [];
 
   final places =
-      GoogleMapsPlaces(apiKey: 'AIzaSyBeguk4WLeX-_ReS878WDGefHxMdFKubKo');
+      GoogleMapsPlaces(apiKey: '<<== YOUR API KEY GOES HERE ==>>');
 
 
   /*
