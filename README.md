@@ -3,7 +3,7 @@
 Searching through available google maps places and returning top 3 results matching the user input most closly immediatly.
 
 Video Demo:
-https://user-images.githubusercontent.com/20814879/129452358-05c91a46-0377-4a5b-980c-3b9286099593.mov
+![Output sample](https://user-images.githubusercontent.com/20814879/129452358-05c91a46-0377-4a5b-980c-3b9286099593.mov)
 
 
 
