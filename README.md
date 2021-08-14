@@ -22,6 +22,7 @@ Searching through available google maps places and returning top 3 results match
   ✅  &nbsp; Run the project with "flutter run"  <br/>
   <br />
   ✅  &nbsp; Enjoy the places search service in your custom project  <br/>
+  <br/>
 
 
 

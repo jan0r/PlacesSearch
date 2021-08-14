@@ -26,6 +26,7 @@ dependencies:
   geolocator: ^5.3.2+2
   google_maps_webservice: ^0.0.18
   google_place: ^0.3.3
+  url_launcher: ^5.7.10
 
 
   # The following adds the Cupertino Icons font to your application.
