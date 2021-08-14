@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_place/google_place.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,17 +48,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final _addressController = TextEditingController();
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  //TextField Spacing
+  double _verticalSpace = 0.7;
+  double _horizontalSpace = 5.0;
+  double cardHeight = 0.0;
+
+  //Home Address
+  GooglePlace googlePlace;
+  List<AutocompletePrediction> predictions = [];
+
+  void autoCompleteSearch(String value) async {
+    var result = await googlePlace.autocomplete.get(value);
+    if (result != null && result.predictions != null && mounted) {
+      setState(() {
+        predictions = result.predictions;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    String apiKey = 'AIzaSyBTYW4s3JRHEMFNEZE1FAGZ7UgIeba69qE';
+    googlePlace = GooglePlace(apiKey);
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _addressController.dispose();
+    super.dispose();
   }
 
   @override
@@ -94,20 +117,68 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'PlacesSearch by jan0r',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            //Address input field
+            Container(
+              padding: EdgeInsets.symmetric(vertical: _verticalSpace),
+              child: Column(
+                children: [
+                  TextFormField(
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                        autoCompleteSearch(value);
+                        cardHeight = 170.0;
+                      } else {
+                        if (predictions.length > 0 && mounted) {
+                          setState(() {
+                            predictions = [];
+                          });
+                        }
+                      }
+                    },
+                    controller: _addressController,
+                    keyboardType: TextInputType.text,
+                    textCapitalization: TextCapitalization.none,
+                    decoration: InputDecoration(
+                      labelText: "Adresse",
+                      prefixIcon: Icon(
+                        Icons.location_on_outlined,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: cardHeight,
+                    child: ListView.builder(
+                      itemCount: predictions.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                            child: ListTile(
+                          dense: true,
+                          leading: Icon(Icons.pin_drop),
+                          title: Text(predictions[index].description),
+                          onTap: () {
+                            setState(() {
+                              _addressController.text = predictions[index].description;
+                              cardHeight = 0.0;
+                            });
+                          },
+                        ));
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: Icon(Icons.add),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
