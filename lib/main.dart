@@ -11,8 +11,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //  decoration: const BoxDecoration(
+      //             gradient: LinearGradient(
+      //               begin: Alignment.topLeft,
+      //               end: Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
+      //               colors: <Color>[
+      //                 Color(0xff63e6be),
+      //                 Color(0xffe599f7),
+      //               ], // red to yellow
+      //               tileMode: TileMode.clamp, // repeats the gradient over the canvas
+      //             ),
+      //           ),
       title: 'Flutter Demo',
       theme: ThemeData(
+        primaryColor: Color(0xff4e5850),
+
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -22,9 +35,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Places Search by jan0r'),
     );
   }
 }
@@ -116,15 +129,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'PlacesSearch by jan0r',
-            ),
             //Address input field
             Container(
               padding: EdgeInsets.symmetric(vertical: _verticalSpace),
               child: Column(
                 children: [
                   TextFormField(
+                    cursorColor: Color(0xff4e5850),
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                         autoCompleteSearch(value);
@@ -144,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       labelText: "Adresse",
                       prefixIcon: Icon(
                         Icons.location_on_outlined,
-                        color: Colors.black,
+                        color: Color(0xff4e5850),
                       ),
                     ),
                   ),
