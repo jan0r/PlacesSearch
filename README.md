@@ -17,7 +17,7 @@ Searching through available google maps places and returning top 3 results match
   <br />  
   ✅  &nbsp; [Get your google maps API KEY here](https://developers.google.com/maps/documentation/javascript/get-api-key)  <br/>
   <br />
-  ✅  &nbsp; Integrate your API Key in the [addressService.dart](https://github.com/jan0r/PlacesSearch/blob/dev/lib/services/addressService.dart) and in the [main.dart](https://github.com/jan0r/PlacesSearch/blob/dev/lib/main.dart) file <br/>
+  ✅  &nbsp; Integrate your API Key in the [addressService.dart](https://github.com/jan0r/PlacesSearch/blob/dev/lib/services/addressService.dart) and in the [main.dart](https://github.com/jan0r/PlacesSearch/blob/dev/lib/main.dart) file 
   <br />
   ✅  &nbsp; Run the project with "flutter run"  <br/>
   <br />
