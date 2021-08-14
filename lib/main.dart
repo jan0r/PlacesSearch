@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-
       ),
       home: MyHomePage(title: 'Places Search by jan0r'),
     );
@@ -109,87 +108,93 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            //Address input field
-            Container(
-              padding: EdgeInsets.symmetric(vertical: _verticalSpace),
-              child: Column(
-                children: [
-                  TextFormField(
-                    cursorColor: Color(0xff4e5850),
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        autoCompleteSearch(value);
-                        cardHeight = 170.0;
-                      } else {
-                        if (predictions.length > 0 && mounted) {
-                          setState(() {
-                            predictions = [];
-                          });
+      body: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              //Address input field
+              Container(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      cursorColor: Color(0xff4e5850),
+                      onChanged: (value) {
+                        if (value.isNotEmpty) {
+                          autoCompleteSearch(value);
+                          cardHeight = 500.0;
+                        } else {
+                          if (predictions.length > 0 && mounted) {
+                            setState(() {
+                              predictions = [];
+                            });
+                          }
                         }
-                      }
-                    },
-                    controller: _addressController,
-                    keyboardType: TextInputType.text,
-                    textCapitalization: TextCapitalization.none,
-                    decoration: InputDecoration(
-                      labelText: "Adresse",
-                      prefixIcon: Icon(
-                        Icons.location_on_outlined,
-                        color: Color(0xff4e5850),
+                      },
+                      controller: _addressController,
+                      keyboardType: TextInputType.text,
+                      textCapitalization: TextCapitalization.none,
+                      decoration: InputDecoration(
+                        labelText: "Adresse",
+                        prefixIcon: Icon(
+                          Icons.location_on_outlined,
+                          color: Color(0xff4e5850),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: cardHeight,
-                    child: ListView.builder(
-                      itemCount: predictions.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                            child: ListTile(
-                          dense: true,
-                          leading: Icon(Icons.pin_drop),
-                          title: Text(predictions[index].description),
-                          onTap: () {
-                            setState(() {
-                              _addressController.text = predictions[index].description;
-                              cardHeight = 0.0;
-                            });
-                          },
-                        ));
-                      },
-                    ),
-                  )
-                ],
+                    SizedBox(
+                      height: cardHeight,
+                      child: ListView.builder(
+                        itemCount: predictions.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                              child: ListTile(
+                            dense: true,
+                            leading: Icon(Icons.pin_drop),
+                            title: Text(predictions[index].description),
+                            onTap: () {
+                              setState(() {
+                                _addressController.text = predictions[index].description;
+                                print(predictions[index].description);
+                                cardHeight = 0.0;
+                              });
+                            },
+                          ));
+                        },
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        label: const Text('Star me on GitHub'),
+        icon: const Icon(Icons.star),
+        backgroundColor: Color(0xff4e5850),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
